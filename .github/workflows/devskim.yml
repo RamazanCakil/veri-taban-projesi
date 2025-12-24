@@ -1,0 +1,18 @@
+name: DevSkim SQL Security Scan
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Repo'yu çek
+      uses: actions/checkout@v4
+
+    - name: DevSkim ile güvenlik taraması
+      uses: microsoft/DevSkim-Action@v1
