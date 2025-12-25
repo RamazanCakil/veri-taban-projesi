@@ -10,6 +10,7 @@ Sorgularda da görüleceği üzere delete, update, insert işlemleri yapılmış
 
 
 
+
 SELECT:
 
 1- hangi kitaptan kaç tane olduğunu getirir.
@@ -33,6 +34,7 @@ SELECT:
 10- kendi kategorisindeki kitapların stok ortalamasından daha düşük stokta olan kitapları listeler.
 
 
+
 STORED PROCEDURE:
 
 Birden çok kod bloğu bir tek işlem ile yapılır. Bu işlem her zaman değil, gerekli olduğunda çağırılarak yapılır.
@@ -43,6 +45,7 @@ Birden çok kod bloğu bir tek işlem ile yapılır. Bu işlem her zaman değil,
 2-kitabı geri getirme işlemi için girilen kitap_id ve kullanıcı_id'sine göre mevcut kullanıcı ve kitabı bulup kitabın geri veriliş tarihini günceller, stok miktarını 1 arttırır ve loglama işlemi ile kaydeder.
 
 3- yeni kullanıcı kaydı işlemi yapmak için gerekli kullanıcı verileri (isim , soy isim, email, telefon) tanımlanır, insert into ile kullanıcı tablosuna eklenir ve log kaydı oluşturularak yapılan işlem kaydedilir.
+
 
 
 VIEW:
@@ -57,6 +60,7 @@ Sanal bir tablo oluşturur.
 3- hangi kullanıcının kaç kitap ödünç aldığı verilmesi için; kullanıcı tablosuyla odunc tablosu left join ile birleştirilir. inner join ile (normal join) birleştirilmemesinin sebebi hiç kitap almamış olan kullanıcıyı da getirmesini istememizdir. Count ile saydık ve group by ile gurupladık (tekrar olmasın diye). Bu tablodaki verilere view ile hızlıca erişebiliriz.
 
 
+
 TRANSACTİON:
 
 Birden fazla sql işlemi bir bütün gibi çalıştırılır.
@@ -69,6 +73,7 @@ Birden fazla sql işlemi bir bütün gibi çalıştırılır.
 3- kitap ödünç vermeyi kontrol amaçlı; odunc tablosuna kitap eklenir ve mevcut stoktan 1 çıkartılır. Sadece hata verip vermediğini kontrol ettiğimiz için rollback ile kapatıyoruz. rollback ile kapatınca bu işlemlerin hiçbiri aslında yapılmadı. Biz sadece hata alacak mıyız diye kontrol ettik. 
 
 4- kitap ödünç vermek için odunc tablosuna veriler eklendi (insert into) , stok miktarı güncellendi ve yapılan işlem log'a kaydedildi.   
+
 
 
 TRIGGER:
