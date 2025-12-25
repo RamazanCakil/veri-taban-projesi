@@ -192,18 +192,16 @@ CREATE PROCEDURE borrow_book(
 BEGIN
     DECLARE v_stock INT;
 
-    -- Kitabın stok durumunu kontrol et
+    
     SELECT stock INTO v_stock FROM kitaplar WHERE book_id = p_book_id;
 
     IF v_stock > 0 THEN
-        -- Ödünç verme kaydı oluştur
+        
         INSERT INTO odunc(user_id, book_id, loan_date, due_date, return_date)
         VALUES (p_user_id, p_book_id, CURDATE(), CURDATE() + INTERVAL 14 DAY, NULL);
 
-        -- Kitap stokunu azalt
         UPDATE kitaplar SET stock = stock - 1 WHERE book_id = p_book_id;
 
-        -- Log kaydı oluştur
         INSERT INTO log(user_id, action_type, action_detail, log_date)
         VALUES (p_user_id, 'BORROW', CONCAT('Kitap ID ', p_book_id, ' ödünç alındı'), NOW());
     ELSE
@@ -228,15 +226,13 @@ CREATE PROCEDURE return_book(
     IN p_book_id INT
 )
 BEGIN
-    -- Ödünç kaydını güncelle (return_date)
+
     UPDATE odunc
     SET return_date = CURDATE()
     WHERE user_id = p_user_id AND book_id = p_book_id AND return_date IS NULL;
 
-    -- Kitap stokunu artır
     UPDATE kitaplar SET stock = stock + 1 WHERE book_id = p_book_id;
 
-    -- Log kaydı oluştur
     INSERT INTO log(user_id, action_type, action_detail, log_date)
     VALUES (p_user_id, 'RETURN', CONCAT('Kitap ID ', p_book_id, ' iade edildi'), NOW());
 END;
@@ -258,11 +254,9 @@ CREATE PROCEDURE add_user(
     IN p_telefon VARCHAR(50)
 )
 BEGIN
-    -- Kullanıcı ekleme
     INSERT INTO kullanici(ad, soyad, email, telefon, kayit_tarihi)
     VALUES (p_ad, p_soyad, p_email, p_telefon, NOW());
 
-    -- Log kaydı
     INSERT INTO log(user_id, action_type, action_detail, log_date)
     VALUES (LAST_INSERT_ID(), 'REGISTER', CONCAT('Kullanıcı ', p_ad, ' ', p_soyad, ' eklendi'), NOW());
 END;
@@ -365,7 +359,6 @@ UPDATE kitaplar
 SET stock = stock - 1
 WHERE book_id = 2;
 
--- İşlem iptal ediliyor
 ROLLBACK;
 
 select * from odunc;
