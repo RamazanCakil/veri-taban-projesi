@@ -1,4 +1,14 @@
 # veri-tabanı-projesi : e-kütüphane veri tabanı
+
+TABLOLAR
+
+Tablolar 3. normal forma uygundur. öncelikle 1. normal forma uygunluğunu kanıtlayacak olursak, tabloların her bir hücresinde tek bir veri tutuluyor.Tekrarlayan satırlar yoktur. 2. normal forma bakacak olursak,primary keyler tek bir değerden oluşur book_id gibi. yani kısmi bağımlılık yoktur.Bu yüzden 2. normal forma da uygundur.3. normal form için ise; yazarlar, kategoriler, odunc gibi tablolar oluşturularak veriyi kategorilere ayırdık. böylece istediğimiz veriyi mesela güncellemek istediğimiz zaman diğer değişkenler ile uğraşmadan sadece ilgili alandaki değişkenleri tanımlayıp değiştirerek kolay okunup yazılmasını yani kolay işlem yapılmasını sağladık. tablolar arasında ilişkileri ise, foreign key'lerle tabloları birbirine bağlayarak istediğimiz zaman farklı tablodan veri çekebileceğimiz hale getirdik. Böylece 3 normal forma da uygun olduğunu kanıtladık. 
+
+Her tabloda veri tanımlamalarında kısaltmalar da kullanılmıştır.
+
+
+
+
 SELECT:
 
 1- hangi kitaptan kaç tane olduğunu getirir.
