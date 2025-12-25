@@ -6,6 +6,7 @@ Tablolar 3. normal forma uygundur. öncelikle 1. normal forma uygunluğunu kanı
 
 Her tabloda veri tanımlamalarında kısaltmalar da kullanılmıştır.
 
+Sorgularda da görüleceği üzere delete, update, insert işlemleri yapılmıştır. Yani CRUD işlemleri yapılabilmektadir.  
 
 
 
