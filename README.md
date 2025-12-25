@@ -34,7 +34,9 @@ SELECT:
 
 
 STORED PROCEDURE:
+
 Birden çok kod bloğu bir tek işlem ile yapılır. Bu işlem her zaman değil, gerekli olduğunda çağırılarak yapılır.
+
 
 1- kitap ödünç verme işlemi için girilen kitap_id ve kullanıcı_id'sine göre kitabın mevcut stok durumunu kontrol eder, eğer sıfırdan büyükse stoktan düşürür ve loglama işlemi yapar.
 
@@ -44,7 +46,9 @@ Birden çok kod bloğu bir tek işlem ile yapılır. Bu işlem her zaman değil,
 
 
 VIEW:
+
 Sanal bir tablo oluşturur.
+
 
 1- ödünç tablosunu halihazırda tanımlı olan foreign keyler ile (user_id,book_id) kullanici ve kitaplar tablolarıyla birleştirir. Böylece ödünç tablosundan; odunc_id,loan_date,due_date,return_date  , kitaplar tablosundan ; book_title   ve kullanici tablosundan da ad, soyad verilerini çekerek bir tablo oluşturur ve bizlere verir. Bu 3 tablonun verileri view ile oluşturulan sanal tablodan hızlıca çekilir.
 
@@ -54,17 +58,23 @@ Sanal bir tablo oluşturur.
 
 
 TRANSACTİON:
+
 Birden fazla sql işlemi bir bütün gibi çalıştırılır.
+
 
 1- kullanıcı tablosuna yeni kayıt eklemek için insert into ... + values() kullanılır. Aynı şekilde log kaydı da oluşturmak için insert into ... + values() ile yapılır. Stored prosedure gibi işlemi yapmak için dışarıdan veri almayı beklemez, ekleyeceği kişi zaten bellidir ve bu işlem bir kere yapılır. Transaction için parametre oluşturulmaz. Eklenecek değer direk insert into ile eklenir. Bunun yanında, stored procedure gibi birden fazla kere kullanılmaz.
 
 2- kitaplar tablosundan kitap_id si 5 olan kitaap silindi. ve log kaydı da yapıldı. Begin ve start transaction arasında bir fark yoktur ikisi de kod bloğunu başlatır.commit ile sonlanır.
 
-3- kitap ödünç vermek için odunc tablosuna veriler eklendi (insert into) , stok miktarı güncellendi ve yapılan işlem log'a kaydedildi.   
+3- kitap ödünç vermeyi kontrol amaçlı; odunc tablosuna kitap eklenir ve mevcut stoktan 1 çıkartılır. Sadece hata verip vermediğini kontrol ettiğimiz için rollback ile kapatıyoruz. rollback ile kapatınca bu işlemlerin hiçbiri aslında yapılmadı. Biz sadece hata alacak mıyız diye kontrol ettik. 
+
+4- kitap ödünç vermek için odunc tablosuna veriler eklendi (insert into) , stok miktarı güncellendi ve yapılan işlem log'a kaydedildi.   
 
 
 TRIGGER:
+
 Örnek olarak kitaplar tablosu için ekleme, güncelleme ve silme işlemlerini otomatik olarak yapacak trigger oluşturalım. Her tablo için ayrı ayrı oluşturulabilir. 
+
 
 1- create trigger ... ile trigger oluşturduk. after insert on kitaplar ile kitaplar tablosuna ekleme yapıldıktan sonra çalışsın dedik. for each row ile de her bir komut için bir log kaydı yapacak şekilde olsun dedik(yani her bir işlemi kaydedecek). Begin ile yapacağı işlem başlar . insert into log(...) diyerek values(...) ile eklenecek.
 log action_type "insert" dedik.
