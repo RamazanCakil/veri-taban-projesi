@@ -21,9 +21,9 @@ SELECT:
 
 4- kitap başlığı harry poter ile başlayan kitapları getirir.
 
-5- kullanıcı isimlerini kullanıcı, yazar isimlerini yazar olarak tür kategorisinde gösterir.
+5- kullanıcı isimlerini kullanıcı, yazar isimlerini yazar olarak tur sütununda gösterir. 
 
-6- en çok ödünç alınan kitabı getirir.
+6- en çok ödünç alınan kitabın başlığını getirir.
 
 7- ödünç alınmayan kitapları getirir.
 
