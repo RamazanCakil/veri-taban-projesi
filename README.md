@@ -78,7 +78,7 @@ Birden fazla sql işlemi bir bütün gibi çalıştırılır.
 
 TRIGGER:
 
-Örnek olarak kitaplar tablosu için ekleme, güncelleme ve silme işlemlerini otomatik olarak yapacak trigger oluşturalım. Her tablo için ayrı ayrı oluşturulabilir. 
+Bunun stored procedureden farkı, çalışması için tetiklenmenin otomatik olmasıdır. Örnek olarak kitaplar tablosu için ekleme, güncelleme ve silme işlemlerini otomatik olarak yapacak trigger oluşturalım. Her tablo için ayrı ayrı oluşturulabilir. 
 
 
 1- create trigger ... ile trigger oluşturduk. after insert on kitaplar ile kitaplar tablosuna ekleme yapıldıktan sonra çalışsın dedik. for each row ile de her bir komut için bir log kaydı yapacak şekilde olsun dedik(yani her bir işlemi kaydedecek). Begin ile yapacağı işlem başlar . insert into log(...) diyerek values(...) ile eklenecek.
