@@ -8,7 +8,7 @@ Her tabloda veri tanımlamalarında kısaltmalar da kullanılmıştır.
 
 Sorgularda da görüleceği üzere delete, update, insert işlemleri yapılmıştır. Yani CRUD işlemleri yapılabilmektadir.  
 
-
+Tabloların ERR diyagramı ektedir.
 
 
 SELECT:
